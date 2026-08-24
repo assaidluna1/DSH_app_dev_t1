@@ -1,0 +1,65 @@
+# Product Slice Execution Contract (PSEC) — TechDist CRM Base
+# Uso: referencia para pruebas DSH. Este archivo define los contratos
+# de ejecución para el Quality Harness automatizado.
+
+slice_id: "TDCRM-SL-BASE"
+version: "1.0.0"
+objective: >
+  Construir y desplegar la aplicación base TechDist CRM (FastAPI + PostgreSQL + React)
+  con todos los endpoints de API definidos, cobertura de tests >= 80%, y 
+  datos sintéticos de seed funcionales.
+
+acceptance_criteria:
+  - "GET /health retorna HTTP 200 con body { status: ok }"
+  - "POST /api/v1/auth/login retorna JWT válido con credenciales correctas"
+  - "GET /api/v1/dashboard/summary retorna pipeline_total_usd como número >= 0"
+  - "GET /api/v1/oportunidades retorna lista paginada con campo items y total"
+  - "PATCH /api/v1/oportunidades/{id}/etapa con etapa=ganado fuerza probabilidad=100"
+  - "pytest --tb=short sale con 0 fallos"
+  - "docker compose up --build finaliza sin errores"
+  - "Frontend accesible en http://localhost:3000 con página de login visible"
+
+allowed_tools:
+  - fs_read
+  - fs_write
+  - shell_sandbox  # limitado a: pytest, docker compose, npm, pip
+  - db_query       # solo lectura para verificación de seed
+
+budgets:
+  max_loops: 5
+  inference_budget_usd: 3.00
+  max_execution_time_minutes: 30
+
+mandatory_tests:
+  framework: pytest
+  min_coverage_percent: 80
+  mutation_score_threshold: null   # no aplicar mutation testing en slice inicial
+  required_test_files:
+    - tests/test_health.py
+    - tests/test_auth.py
+    - tests/test_oportunidades.py
+    - tests/test_clientes.py
+    - tests/test_dashboard.py
+
+human_gate:
+  required: true
+  reviewer_role: "Arquitecto o Dev Senior"
+  max_review_time_minutes: 15
+  gate_criteria:
+    - "Evidence Package generado (logs de pytest + docker compose up)"
+    - "Seed data visible en /api/v1/dashboard/summary (pipeline > 0)"
+    - "Sin credenciales hardcodeadas en código fuente"
+
+deployment_cond:
+  health_endpoint: "/health"
+  expected_http_status: 200
+  startup_timeout_seconds: 60
+
+rollback_cond:
+  trigger: "health_endpoint returns non-200 after 3 consecutive checks"
+  action: "revert to previous image tag"
+
+finops:
+  track_inference_cost: true
+  track_human_time: true
+  alert_on_budget_exceed: true

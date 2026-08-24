@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  backend:
+    volumes:
+      - ./backend:/app
+    environment:
+      - ENVIRONMENT=development
+    command: >
+      sh -c "alembic upgrade head &&
+             python scripts/seed.py &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  frontend:
+    ports:
+      - "3000:80"
