@@ -16,6 +16,7 @@ from app.models.contacto import Contacto
 from app.models.oportunidad import Oportunidad
 from app.models.actividad import Actividad
 from app.models.nota import Nota
+from app.models.cotizacion import Cotizacion
 from app.security import get_password_hash, create_access_token
 
 # Use SQLite in memory for lightning fast deterministic tests

@@ -51,6 +51,7 @@ class OportunidadBase(BaseModel):
     fecha_cierre_estimada: Optional[date] = None
     descripcion: Optional[str] = None
     origen: Optional[str] = None
+    canal_origen: Optional[str] = None
     prioridad: Optional[str] = "media"
     motivo_perdida: Optional[str] = None
 
@@ -70,6 +71,7 @@ class OportunidadUpdate(BaseModel):
     fecha_cierre_estimada: Optional[date] = None
     descripcion: Optional[str] = None
     origen: Optional[str] = None
+    canal_origen: Optional[str] = None
     prioridad: Optional[str] = None
     motivo_perdida: Optional[str] = None
 

@@ -7,6 +7,7 @@ from app.models.oportunidad import Oportunidad
 from app.models.oportunidad_producto import OportunidadProducto
 from app.models.actividad import Actividad
 from app.models.nota import Nota
+from app.models.cotizacion import Cotizacion
 
 __all__ = [
     "User",
@@ -18,4 +19,5 @@ __all__ = [
     "OportunidadProducto",
     "Actividad",
     "Nota",
+    "Cotizacion",
 ]

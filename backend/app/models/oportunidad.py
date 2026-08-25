@@ -21,6 +21,7 @@ class Oportunidad(Base):
     fecha_cierre_estimada = Column(Date, nullable=True)
     descripcion = Column(Text, nullable=True)
     origen = Column(String(50), nullable=True)  # 'referido', 'outbound', 'inbound', 'renovacion', 'otro'
+    canal_origen = Column(String(20), nullable=True)  # 'directo', 'referido', 'digital', 'evento'
     prioridad = Column(String(20), default="media", nullable=False)  # 'alta', 'media', 'baja'
     motivo_perdida = Column(String(300), nullable=True)
     
@@ -34,3 +35,4 @@ class Oportunidad(Base):
     productos = relationship("OportunidadProducto", back_populates="oportunidad", cascade="all, delete-orphan")
     actividades = relationship("Actividad", back_populates="oportunidad", cascade="all, delete-orphan")
     notas = relationship("Nota", back_populates="oportunidad", cascade="all, delete-orphan")
+    cotizaciones = relationship("Cotizacion", back_populates="oportunidad", cascade="all, delete-orphan")

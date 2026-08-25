@@ -102,3 +102,15 @@ def test_dashboard_win_loss_trend(client, vendedor_headers):
         assert "ganadas" in item
         assert "perdidas" in item
         assert "valor_ganado_usd" in item
+
+def test_dashboard_pipeline_por_fabricante_y_etapa(client, vendedor_headers):
+    """T-02: Cross-dimension pipeline endpoint."""
+    seed_test_data(client, vendedor_headers)
+    res = client.get("/api/v1/dashboard/pipeline-por-fabricante-y-etapa", headers=vendedor_headers)
+    assert res.status_code == 200
+    data = res.json()
+    assert isinstance(data, list)
+    for item in data:
+        assert "fabricante" in item
+        assert "etapa" in item
+        assert isinstance(item["valor_total_usd"], (int, float))

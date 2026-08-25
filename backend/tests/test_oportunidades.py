@@ -167,3 +167,83 @@ def test_activities_and_notes_with_cascade_delete(client, db_session, vendedor_h
     nota_in_db = db_session.query(Nota).filter(Nota.id == uuid.UUID(nota_id)).first()
     assert act_in_db is None
     assert nota_in_db is None
+
+
+def test_etapa_change_creates_seguimiento_activity(client, vendedor_headers):
+    """Test that changing etapa auto-registers a seguimiento activity."""
+    cliente_id = create_sample_cliente(client, vendedor_headers)
+
+    # Create opportunity
+    res = client.post(
+        "/api/v1/oportunidades/",
+        headers=vendedor_headers,
+        json={
+            "nombre": "Opportunity for stage-change test",
+            "cliente_id": cliente_id,
+            "etapa": "prospeccion",
+            "valor_estimado_usd": 25000.0,
+        },
+    )
+    assert res.status_code == 201
+    opp_id = res.json()["id"]
+
+    # Count initial activities
+    detail_before = client.get(f"/api/v1/oportunidades/{opp_id}", headers=vendedor_headers).json()
+    initial_act_count = len(detail_before["actividades"])
+
+    # Change etapa to 'calificacion'
+    patch_res = client.patch(
+        f"/api/v1/oportunidades/{opp_id}/etapa",
+        headers=vendedor_headers,
+        json={"etapa": "calificacion"},
+    )
+    assert patch_res.status_code == 200
+    assert patch_res.json()["etapa"] == "calificacion"
+
+    # Verify a seguimiento activity was created
+    detail_after = client.get(f"/api/v1/oportunidades/{opp_id}", headers=vendedor_headers).json()
+    assert len(detail_after["actividades"]) == initial_act_count + 1
+
+    # The new activity should be of type 'seguimiento' and reference the stage change
+    new_act = detail_after["actividades"][0]  # Most recent first
+    assert new_act["tipo"] == "seguimiento"
+    assert "calificacion" in new_act["titulo"]
+
+def test_oportunidad_canal_origen_field(client, vendedor_headers):
+    """T-01: canal_origen field accepts and returns ENUM values."""
+    cliente_id = create_sample_cliente(client, vendedor_headers)
+    res = client.post(
+        "/api/v1/oportunidades/",
+        headers=vendedor_headers,
+        json={
+            "nombre": "Lead desde LinkedIn",
+            "cliente_id": cliente_id,
+            "etapa": "prospeccion",
+            "valor_estimado_usd": 15000.0,
+            "canal_origen": "digital",
+        },
+    )
+    assert res.status_code == 201
+    assert res.json()["canal_origen"] == "digital"
+    opp_id = res.json()["id"]
+
+    put_res = client.put(
+        f"/api/v1/oportunidades/{opp_id}",
+        headers=vendedor_headers,
+        json={"canal_origen": "evento"},
+    )
+    assert put_res.status_code == 200
+    assert put_res.json()["canal_origen"] == "evento"
+
+    res4 = client.post(
+        "/api/v1/oportunidades/",
+        headers=vendedor_headers,
+        json={
+            "nombre": "Sin canal",
+            "cliente_id": cliente_id,
+            "etapa": "prospeccion",
+            "valor_estimado_usd": 12000.0,
+        },
+    )
+    assert res4.status_code == 201
+    assert res4.json()["canal_origen"] is None

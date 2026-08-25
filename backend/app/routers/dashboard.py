@@ -11,6 +11,7 @@ from app.schemas.dashboard import (
     PipelinePorEtapa,
     PipelinePorVendedor,
     PipelinePorFabricante,
+    PipelinePorFabricanteEtapa,
     ForecastResponse,
     WinLossTrendItem,
 )
@@ -69,6 +70,11 @@ def get_actividad_reciente(
         .limit(limit)
         .all()
     )
+
+
+@router.get("/pipeline-por-fabricante-y-etapa", response_model=List[PipelinePorFabricanteEtapa])
+def get_pipeline_por_fabricante_y_etapa(db: Session = Depends(get_db)):
+    return dashboard_service.get_pipeline_por_fabricante_y_etapa(db)
 
 
 @router.get("/win-loss-trend", response_model=List[WinLossTrendItem])

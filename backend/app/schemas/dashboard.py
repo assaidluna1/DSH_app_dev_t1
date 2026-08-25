@@ -35,6 +35,14 @@ class PipelinePorFabricante(BaseModel):
     valor_total_usd: float
 
 
+class PipelinePorFabricanteEtapa(BaseModel):
+    fabricante: str
+    etapa: str
+    count: int
+    valor_total_usd: float
+    valor_ponderado_usd: float
+
+
 class ForecastResponse(BaseModel):
     periodo: str
     fecha_inicio: date

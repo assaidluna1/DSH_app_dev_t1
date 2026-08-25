@@ -13,6 +13,7 @@ from app.routers import (
     actividades_router,
     notas_router,
     dashboard_router,
+    cotizaciones,
 )
 
 app = FastAPI(
@@ -63,3 +64,4 @@ app.include_router(oportunidades_router, prefix=settings.API_V1_STR)
 app.include_router(actividades_router, prefix=settings.API_V1_STR)
 app.include_router(notas_router, prefix=settings.API_V1_STR)
 app.include_router(dashboard_router, prefix=settings.API_V1_STR)
+app.include_router(cotizaciones.router, prefix=settings.API_V1_STR)

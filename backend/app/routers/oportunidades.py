@@ -128,6 +128,7 @@ def create_oportunidad(
         fecha_cierre_estimada=opp_in.fecha_cierre_estimada,
         descripcion=opp_in.descripcion,
         origen=opp_in.origen,
+        canal_origen=opp_in.canal_origen,
         prioridad=opp_in.prioridad or "media",
         motivo_perdida=opp_in.motivo_perdida,
     )
@@ -180,12 +181,15 @@ def update_oportunidad_etapa(
     id: UUID,
     etapa_in: OportunidadEtapaUpdate,
     db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
 ):
     opp = db.query(Oportunidad).filter(Oportunidad.id == id).first()
     if not opp:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Oportunidad not found")
 
+    old_etapa = opp.etapa
     opp.etapa = etapa_in.etapa
+
     if etapa_in.etapa == "ganado":
         opp.probabilidad = 100.0
         opp.motivo_perdida = None
@@ -194,6 +198,18 @@ def update_oportunidad_etapa(
         opp.motivo_perdida = etapa_in.motivo_perdida
     else:
         opp.motivo_perdida = None
+
+    # Auto-register a "seguimiento" activity when the etapa actually changes
+    if old_etapa != etapa_in.etapa:
+        new_actividad = Actividad(
+            oportunidad_id=opp.id,
+            usuario_id=current_user.id,
+            tipo="seguimiento",
+            titulo=f"Etapa actualizada a '{etapa_in.etapa}'",
+            descripcion=f"Cambio de etapa: {old_etapa} → {etapa_in.etapa}",
+            fecha=datetime.utcnow(),
+        )
+        db.add(new_actividad)
 
     opp.updated_at = datetime.utcnow()
     db.commit()

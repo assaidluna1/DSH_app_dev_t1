@@ -161,6 +161,45 @@ def get_pipeline_por_fabricante(db: Session) -> List[PipelinePorFabricante]:
     return sorted(result, key=lambda x: x.valor_total_usd, reverse=True)
 
 
+def get_pipeline_por_fabricante_y_etapa(db: Session) -> list:
+    """Pipeline cruzado fabricante × etapa con JOIN sobre productos y fabricantes."""
+    from app.schemas.dashboard import PipelinePorFabricanteEtapa
+    
+    rows = (
+        db.query(
+            Fabricante.nombre,
+            Oportunidad.etapa,
+            func.count(OportunidadProducto.id),
+            func.sum(
+                func.coalesce(OportunidadProducto.precio_unitario_usd, Producto.precio_lista_usd, 0) * OportunidadProducto.cantidad
+            ),
+            func.sum(
+                func.coalesce(OportunidadProducto.precio_unitario_usd, Producto.precio_lista_usd, 0)
+                * OportunidadProducto.cantidad
+                * (func.coalesce(Oportunidad.probabilidad, 0) / 100.0)
+            ),
+        )
+        .select_from(OportunidadProducto)
+        .join(Producto, OportunidadProducto.producto_id == Producto.id)
+        .join(Fabricante, Producto.fabricante_id == Fabricante.id)
+        .join(Oportunidad, OportunidadProducto.oportunidad_id == Oportunidad.id)
+        .group_by(Fabricante.nombre, Oportunidad.etapa)
+        .order_by(Fabricante.nombre, Oportunidad.etapa)
+        .all()
+    )
+    
+    return [
+        PipelinePorFabricanteEtapa(
+            fabricante=row[0],
+            etapa=row[1],
+            count=row[2],
+            valor_total_usd=round(float(row[3] or 0), 2),
+            valor_ponderado_usd=round(float(row[4] or 0), 2),
+        )
+        for row in rows
+    ]
+
+
 def get_top_oportunidades(db: Session, limit: int = 10) -> List[Oportunidad]:
     return (
         db.query(Oportunidad)
