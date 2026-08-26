@@ -16,11 +16,11 @@ export const WinLossChart = ({ data = [] }) => {
     if (active && payload && payload.length) {
       const d = payload[0].payload;
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
-          <p className="font-bold text-slate-100">Mes: {label}</p>
-          <p className="text-emerald-400">Ganadas: <span className="font-semibold text-slate-200">{d.ganadas}</span></p>
-          <p className="text-rose-400">Perdidas: <span className="font-semibold text-slate-200">{d.perdidas}</span></p>
-          <p className="text-blue-400">Ingresos Ganados: <span className="font-semibold text-slate-200">{formatCurrency(d.valor_ganado_usd)}</span></p>
+        <div className="bg-surface-900 border border-surface-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
+          <p className="font-bold text-surface-100">Mes: {label}</p>
+          <p className="text-emerald-400">Ganadas: <span className="font-semibold text-surface-200">{d.ganadas}</span></p>
+          <p className="text-rose-400">Perdidas: <span className="font-semibold text-surface-200">{d.perdidas}</span></p>
+          <p className="text-brand-400">Ingresos Ganados: <span className="font-semibold text-surface-200">{formatCurrency(d.valor_ganado_usd)}</span></p>
         </div>
       );
     }
@@ -28,11 +28,11 @@ export const WinLossChart = ({ data = [] }) => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl p-6 shadow-xl">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-100">Tendencia Ganadas vs Perdidas</h3>
-          <p className="text-xs text-slate-400 mt-0.5">Histórico de efectividad en los últimos 6 meses</p>
+          <h3 className="text-base font-bold text-surface-100">Tendencia Ganadas vs Perdidas</h3>
+          <p className="text-xs text-surface-400 mt-0.5">Histórico de efectividad en los últimos 6 meses</p>
         </div>
       </div>
 

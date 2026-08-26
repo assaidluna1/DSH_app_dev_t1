@@ -15,11 +15,11 @@ export const PipelineByRep = ({ data = [] }) => {
     if (active && payload && payload.length) {
       const d = payload[0].payload;
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
-          <p className="font-bold text-slate-100">{label}</p>
-          <p className="text-blue-400">Oportunidades: <span className="font-semibold text-slate-200">{d.count}</span></p>
-          <p className="text-emerald-400">Pipeline Total: <span className="font-semibold text-slate-200">{formatCurrency(d.valor_total_usd)}</span></p>
-          <p className="text-amber-400">Win Rate: <span className="font-semibold text-slate-200">{d.win_rate}%</span></p>
+        <div className="bg-surface-900 border border-surface-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
+          <p className="font-bold text-surface-100">{label}</p>
+          <p className="text-brand-400">Oportunidades: <span className="font-semibold text-surface-200">{d.count}</span></p>
+          <p className="text-emerald-400">Pipeline Total: <span className="font-semibold text-surface-200">{formatCurrency(d.valor_total_usd)}</span></p>
+          <p className="text-amber-400">Win Rate: <span className="font-semibold text-surface-200">{d.win_rate}%</span></p>
         </div>
       );
     }
@@ -27,11 +27,11 @@ export const PipelineByRep = ({ data = [] }) => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl p-6 shadow-xl">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-100">Pipeline por Vendedor</h3>
-          <p className="text-xs text-slate-400 mt-0.5">Distribución comercial por ejecutivo de cuenta</p>
+          <h3 className="text-base font-bold text-surface-100">Pipeline por Vendedor</h3>
+          <p className="text-xs text-surface-400 mt-0.5">Distribución comercial por ejecutivo de cuenta</p>
         </div>
       </div>
 

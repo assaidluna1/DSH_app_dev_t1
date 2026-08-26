@@ -23,11 +23,11 @@ export const PipelineFunnel = ({ data = [] }) => {
     if (active && payload && payload.length) {
       const d = payload[0].payload;
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
-          <p className="font-bold text-slate-100">{label}</p>
-          <p className="text-blue-400">Oportunidades: <span className="font-semibold text-slate-200">{d.count}</span></p>
-          <p className="text-emerald-400">Valor Total: <span className="font-semibold text-slate-200">{formatCurrency(d.valor)}</span></p>
-          <p className="text-indigo-400">Valor Ponderado: <span className="font-semibold text-slate-200">{formatCurrency(d.ponderado)}</span></p>
+        <div className="bg-surface-900 border border-surface-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
+          <p className="font-bold text-surface-100">{label}</p>
+          <p className="text-brand-400">Oportunidades: <span className="font-semibold text-surface-200">{d.count}</span></p>
+          <p className="text-emerald-400">Valor Total: <span className="font-semibold text-surface-200">{formatCurrency(d.valor)}</span></p>
+          <p className="text-brand-400">Valor Ponderado: <span className="font-semibold text-surface-200">{formatCurrency(d.ponderado)}</span></p>
         </div>
       );
     }
@@ -35,11 +35,11 @@ export const PipelineFunnel = ({ data = [] }) => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl p-6 shadow-xl">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-base font-bold text-slate-100">Embudo de Pipeline por Etapa</h3>
-          <p className="text-xs text-slate-400 mt-0.5">Volumen y valor comercial en cada fase del ciclo</p>
+          <h3 className="text-base font-bold text-surface-100">Embudo de Pipeline por Etapa</h3>
+          <p className="text-xs text-surface-400 mt-0.5">Volumen y valor comercial en cada fase del ciclo</p>
         </div>
       </div>
 

@@ -80,25 +80,25 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
     <form onSubmit={handleSubmit} className="space-y-4 text-xs">
       {/* Nombre */}
       <div>
-        <label className="block font-semibold text-slate-300 mb-1">Nombre de la Oportunidad *</label>
+        <label className="block font-semibold text-surface-300 mb-1">Nombre de la Oportunidad *</label>
         <input
           type="text"
           required
           value={formData.nombre}
           onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
           placeholder="Ej: Renovación Datacenter Monterrey"
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+          className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 placeholder-surface-500 focus:outline-none focus:border-brand-500 transition-colors"
         />
       </div>
 
       {/* Cliente */}
       <div>
-        <label className="block font-semibold text-slate-300 mb-1">Cliente *</label>
+        <label className="block font-semibold text-surface-300 mb-1">Cliente *</label>
         <select
           required
           value={formData.cliente_id}
           onChange={(e) => setFormData({ ...formData, cliente_id: e.target.value })}
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+          className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
         >
           <option value="">Seleccione una empresa...</option>
           {clientes.map((c) => (
@@ -112,11 +112,11 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
       {/* Grid: Etapa & Prioridad */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Etapa</label>
+          <label className="block font-semibold text-surface-300 mb-1">Etapa</label>
           <select
             value={formData.etapa}
             onChange={(e) => handleStageChange(e.target.value)}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           >
             <option value="prospeccion">Prospección</option>
             <option value="calificacion">Calificación</option>
@@ -129,11 +129,11 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
         </div>
 
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Prioridad</label>
+          <label className="block font-semibold text-surface-300 mb-1">Prioridad</label>
           <select
             value={formData.prioridad}
             onChange={(e) => setFormData({ ...formData, prioridad: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           >
             <option value="alta">Alta</option>
             <option value="media">Media</option>
@@ -145,7 +145,7 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
       {/* Grid: Valor USD & Probabilidad */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Valor Estimado (USD) *</label>
+          <label className="block font-semibold text-surface-300 mb-1">Valor Estimado (USD) *</label>
           <input
             type="number"
             step="0.01"
@@ -153,19 +153,19 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
             required
             value={formData.valor_estimado_usd}
             onChange={(e) => setFormData({ ...formData, valor_estimado_usd: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           />
         </div>
 
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Probabilidad (%)</label>
+          <label className="block font-semibold text-surface-300 mb-1">Probabilidad (%)</label>
           <input
             type="number"
             min="0"
             max="100"
             value={formData.probabilidad}
             onChange={(e) => setFormData({ ...formData, probabilidad: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           />
         </div>
       </div>
@@ -173,21 +173,21 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
       {/* Grid: Fecha Cierre & Origen */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Fecha Cierre Estimada</label>
+          <label className="block font-semibold text-surface-300 mb-1">Fecha Cierre Estimada</label>
           <input
             type="date"
             value={formData.fecha_cierre_estimada}
             onChange={(e) => setFormData({ ...formData, fecha_cierre_estimada: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           />
         </div>
 
         <div>
-          <label className="block font-semibold text-slate-300 mb-1">Origen del Lead</label>
+          <label className="block font-semibold text-surface-300 mb-1">Origen del Lead</label>
           <select
             value={formData.origen}
             onChange={(e) => setFormData({ ...formData, origen: e.target.value })}
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 focus:outline-none focus:border-brand-500 transition-colors"
           >
             <option value="inbound">Inbound</option>
             <option value="outbound">Outbound</option>
@@ -207,36 +207,36 @@ export const OportunidadForm = ({ initialData = null, onSubmit, onCancel, isSubm
             value={formData.motivo_perdida}
             onChange={(e) => setFormData({ ...formData, motivo_perdida: e.target.value })}
             placeholder="Ej: Precio, competidor, falta de presupuesto..."
-            className="w-full bg-slate-950 border border-rose-800/60 rounded-xl px-3.5 py-2.5 text-rose-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
+            className="w-full bg-surface-950 border border-rose-800/60 rounded-xl px-3.5 py-2.5 text-rose-200 placeholder-surface-500 focus:outline-none focus:border-rose-500 transition-colors"
           />
         </div>
       )}
 
       {/* Descripcion */}
       <div>
-        <label className="block font-semibold text-slate-300 mb-1">Descripción / Notas Iniciales</label>
+        <label className="block font-semibold text-surface-300 mb-1">Descripción / Notas Iniciales</label>
         <textarea
           rows="3"
           value={formData.descripcion}
           onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
           placeholder="Alcance del proyecto, requerimientos técnicos, etc."
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+          className="w-full bg-surface-950 border border-surface-800 rounded-xl px-3.5 py-2.5 text-surface-100 placeholder-surface-500 focus:outline-none focus:border-brand-500 transition-colors resize-none"
         />
       </div>
 
       {/* Form Buttons */}
-      <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+      <div className="flex items-center justify-end gap-3 pt-4 border-t border-surface-800">
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800 font-semibold transition-colors"
+          className="px-4 py-2 rounded-xl text-surface-400 hover:text-surface-200 hover:bg-surface-800 font-semibold transition-colors"
         >
           Cancelar
         </button>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-600/25 disabled:opacity-50 transition-all"
+          className="px-5 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold shadow-lg shadow-brand-600/25 disabled:opacity-50 transition-all"
         >
           {isSubmitting ? 'Guardando...' : initialData ? 'Actualizar Oportunidad' : 'Crear Oportunidad'}
         </button>

@@ -60,25 +60,25 @@ export const Pipeline = () => {
       {/* Action Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-extrabold text-slate-100 tracking-tight">Pipeline Comercial</h2>
-          <p className="text-xs text-slate-400 mt-1">Gestión visual del avance de negocios por etapa de venta</p>
+          <h2 className="text-2xl font-extrabold text-surface-100 tracking-tight">Pipeline Comercial</h2>
+          <p className="text-xs text-surface-400 mt-1">Gestión visual del avance de negocios por etapa de venta</p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-surface-500 absolute left-3 top-1/2 -transurface-y-1/2" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar oportunidad..."
-              className="bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-48 sm:w-64 transition-colors"
+              className="bg-surface-900 border border-surface-800 rounded-xl pl-9 pr-4 py-2 text-xs text-surface-100 placeholder-surface-500 focus:outline-none focus:border-brand-500 w-48 sm:w-64 transition-colors"
             />
           </div>
 
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/25 transition-all shrink-0"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold shadow-lg shadow-brand-600/25 transition-all shrink-0"
           >
             <Plus className="w-4 h-4" />
             <span>Nueva Oportunidad</span>

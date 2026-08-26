@@ -38,7 +38,7 @@ const MainContent = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-surface-950 flex items-center justify-center">
         <LoadingSpinner message="Iniciando sesión segura..." />
       </div>
     );

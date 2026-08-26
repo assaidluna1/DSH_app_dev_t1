@@ -80,14 +80,14 @@ export const Dashboard = () => {
       {/* Top action header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-extrabold text-slate-100 tracking-tight">Resumen Ejecutivo</h2>
-          <p className="text-xs text-slate-400 mt-1">Visibilidad integral del embudo comercial y cumplimiento de metas</p>
+          <h2 className="text-2xl font-extrabold text-surface-100 tracking-tight">Resumen Ejecutivo</h2>
+          <p className="text-xs text-surface-400 mt-1">Visibilidad integral del embudo comercial y cumplimiento de metas</p>
         </div>
         <button
           onClick={fetchDashboardData}
-          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-semibold shadow-sm transition-all"
+          className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-900 border border-surface-800 hover:bg-surface-800 text-surface-300 text-xs font-semibold shadow-sm transition-all"
         >
-          <RefreshCw className="w-3.5 h-3.5 text-blue-400" />
+          <RefreshCw className="w-3.5 h-3.5 text-brand-400" />
           <span>Actualizar Datos</span>
         </button>
       </div>

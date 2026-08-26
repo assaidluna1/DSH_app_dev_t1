@@ -24,11 +24,11 @@ export const ForecastChart = ({ forecastData, periodo, onPeriodoChange }) => {
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
-          <p className="font-bold text-slate-100 mb-1">Forecast Comercial</p>
-          <p className="text-blue-400">Pipeline en Periodo: <span className="font-semibold text-slate-200">{formatCurrency(payload[0]?.value)}</span></p>
-          <p className="text-purple-400">Forecast Ponderado: <span className="font-semibold text-slate-200">{formatCurrency(payload[1]?.value)}</span></p>
-          <p className="text-emerald-400">Ganado a la Fecha: <span className="font-semibold text-slate-200">{formatCurrency(payload[2]?.value)}</span></p>
+        <div className="bg-surface-900 border border-surface-700 p-3 rounded-xl shadow-2xl text-xs space-y-1">
+          <p className="font-bold text-surface-100 mb-1">Forecast Comercial</p>
+          <p className="text-brand-400">Pipeline en Periodo: <span className="font-semibold text-surface-200">{formatCurrency(payload[0]?.value)}</span></p>
+          <p className="text-purple-400">Forecast Ponderado: <span className="font-semibold text-surface-200">{formatCurrency(payload[1]?.value)}</span></p>
+          <p className="text-emerald-400">Ganado a la Fecha: <span className="font-semibold text-surface-200">{formatCurrency(payload[2]?.value)}</span></p>
         </div>
       );
     }
@@ -36,21 +36,21 @@ export const ForecastChart = ({ forecastData, periodo, onPeriodoChange }) => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-slate-100">Forecast de Ventas</h3>
-          <p className="text-xs text-slate-400 mt-0.5">Comparativo de pipeline, ponderado y ganado</p>
+          <h3 className="text-base font-bold text-surface-100">Forecast de Ventas</h3>
+          <p className="text-xs text-surface-400 mt-0.5">Comparativo de pipeline, ponderado y ganado</p>
         </div>
-        <div className="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700">
+        <div className="flex items-center bg-surface-800 p-1 rounded-xl border border-surface-700">
           {['mes', 'trimestre', 'año'].map((p) => (
             <button
               key={p}
               onClick={() => onPeriodoChange(p)}
               className={`px-3 py-1 text-xs font-semibold rounded-lg capitalize transition-all ${
                 periodo === p
-                  ? 'bg-blue-600 text-white shadow'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-brand-600 text-white shadow'
+                  : 'text-surface-400 hover:text-surface-200'
               }`}
             >
               {p}

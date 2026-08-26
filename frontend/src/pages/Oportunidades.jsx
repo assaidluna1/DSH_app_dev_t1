@@ -88,13 +88,13 @@ export const Oportunidades = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-extrabold text-slate-100 tracking-tight">Oportunidades Comerciales</h2>
-          <p className="text-xs text-slate-400 mt-1">Directorio consolidado y control detallado de operaciones</p>
+          <h2 className="text-2xl font-extrabold text-surface-100 tracking-tight">Oportunidades Comerciales</h2>
+          <p className="text-xs text-surface-400 mt-1">Directorio consolidado y control detallado de operaciones</p>
         </div>
 
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/25 transition-all self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold shadow-lg shadow-brand-600/25 transition-all self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Nueva Oportunidad</span>
@@ -102,16 +102,16 @@ export const Oportunidades = () => {
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center gap-3">
+      <div className="bg-surface-900 border border-surface-800 rounded-2xl p-4 shadow-xl flex flex-wrap items-center gap-3">
         {/* Search */}
         <div className="relative flex-1 min-w-[220px]">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-surface-500 absolute left-3 top-1/2 -transurface-y-1/2" />
           <input
             type="text"
             value={filters.search}
             onChange={(e) => setFilters({ ...filters, search: e.target.value, page: 1 })}
             placeholder="Buscar por oportunidad, descripción o cliente..."
-            className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full bg-surface-950 border border-surface-800 rounded-xl pl-9 pr-4 py-2 text-xs text-surface-100 placeholder-surface-500 focus:outline-none focus:border-brand-500 transition-colors"
           />
         </div>
 
@@ -119,7 +119,7 @@ export const Oportunidades = () => {
         <select
           value={filters.etapa}
           onChange={(e) => setFilters({ ...filters, etapa: e.target.value, page: 1 })}
-          className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition-colors"
+          className="bg-surface-950 border border-surface-800 rounded-xl px-3 py-2 text-xs text-surface-200 focus:outline-none focus:border-brand-500 transition-colors"
         >
           <option value="">Todas las etapas</option>
           {Object.entries(stageLabels).map(([key, label]) => (
@@ -133,7 +133,7 @@ export const Oportunidades = () => {
         <select
           value={filters.prioridad}
           onChange={(e) => setFilters({ ...filters, prioridad: e.target.value, page: 1 })}
-          className="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition-colors"
+          className="bg-surface-950 border border-surface-800 rounded-xl px-3 py-2 text-xs text-surface-200 focus:outline-none focus:border-brand-500 transition-colors"
         >
           <option value="">Todas las prioridades</option>
           <option value="alta">Alta</option>
@@ -144,7 +144,7 @@ export const Oportunidades = () => {
         {(filters.search || filters.etapa || filters.prioridad) && (
           <button
             onClick={() => setFilters({ search: '', etapa: '', prioridad: '', page: 1 })}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-surface-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
           >
             <X className="w-3.5 h-3.5" />
             <span>Limpiar</span>

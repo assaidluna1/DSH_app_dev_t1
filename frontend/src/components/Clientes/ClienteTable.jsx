@@ -14,10 +14,10 @@ export const ClienteTable = ({
   onDeleteCliente,
 }) => {
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl shadow-xl overflow-hidden flex flex-col">
       <div className="overflow-x-auto flex-1">
-        <table className="w-full text-left text-xs text-slate-300">
-          <thead className="bg-slate-950/70 text-[11px] uppercase tracking-wider text-slate-400 border-b border-slate-800">
+        <table className="w-full text-left text-xs text-surface-300">
+          <thead className="bg-surface-950/70 text-[11px] uppercase tracking-wider text-surface-400 border-b border-surface-800">
             <tr>
               <th className="py-3.5 px-4 font-semibold">Empresa / Cuenta</th>
               <th className="py-3.5 px-4 font-semibold">Industria</th>
@@ -28,20 +28,20 @@ export const ClienteTable = ({
               <th className="py-3.5 px-4 font-semibold text-center">Acciones</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60">
+          <tbody className="divide-y divide-surface-800/60">
             {clientes.map((cli) => (
               <tr
                 key={cli.id}
                 onClick={() => onSelectCliente?.(cli.id)}
-                className="hover:bg-slate-800/50 cursor-pointer transition-colors group"
+                className="hover:bg-surface-800/50 cursor-pointer transition-colors group"
               >
-                <td className="py-3.5 px-4 font-semibold text-slate-100 group-hover:text-blue-400 transition-colors flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-blue-400">
+                <td className="py-3.5 px-4 font-semibold text-surface-100 group-hover:text-brand-400 transition-colors flex items-center gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-surface-800 border border-surface-700 text-brand-400">
                     <Building2 className="w-4 h-4" />
                   </div>
                   <span>{cli.nombre}</span>
                 </td>
-                <td className="py-3.5 px-4 text-slate-300">
+                <td className="py-3.5 px-4 text-surface-300">
                   {cli.industria || '—'}
                 </td>
                 <td className="py-3.5 px-4">
@@ -49,26 +49,26 @@ export const ClienteTable = ({
                     cli.segmento === 'Enterprise'
                       ? 'bg-purple-900/50 text-purple-300 border-purple-700/60'
                       : cli.segmento === 'Mid-Market'
-                        ? 'bg-blue-900/50 text-blue-300 border-blue-700/60'
-                        : 'bg-slate-800 text-slate-300 border-slate-700'
+                        ? 'bg-brand-900/50 text-brand-300 border-brand-700/60'
+                        : 'bg-surface-800 text-surface-300 border-surface-700'
                   }`}>
                     {cli.segmento}
                   </span>
                 </td>
-                <td className="py-3.5 px-4 text-slate-300">
+                <td className="py-3.5 px-4 text-surface-300">
                   {cli.ciudad || '—'}
                 </td>
-                <td className="py-3.5 px-4 text-center font-mono text-slate-300">
+                <td className="py-3.5 px-4 text-center font-mono text-surface-300">
                   {cli.num_empleados?.toLocaleString() || '—'}
                 </td>
-                <td className="py-3.5 px-4 text-slate-400 truncate max-w-xs">
+                <td className="py-3.5 px-4 text-surface-400 truncate max-w-xs">
                   {cli.website ? (
                     <a
                       href={cli.website}
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-blue-400 hover:underline"
+                      className="text-brand-400 hover:underline"
                     >
                       {cli.website.replace('https://', '')}
                     </a>
@@ -84,21 +84,21 @@ export const ClienteTable = ({
                     <button
                       onClick={() => onSelectCliente?.(cli.id)}
                       title="Ver detalle & Stats"
-                      className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-slate-800 rounded-lg transition-colors"
+                      className="p-1.5 text-surface-400 hover:text-brand-400 hover:bg-surface-800 rounded-lg transition-colors"
                     >
                       <Eye className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onEditCliente?.(cli)}
                       title="Editar"
-                      className="p-1.5 text-slate-400 hover:text-amber-400 hover:bg-slate-800 rounded-lg transition-colors"
+                      className="p-1.5 text-surface-400 hover:text-amber-400 hover:bg-surface-800 rounded-lg transition-colors"
                     >
                       <Edit className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => onDeleteCliente?.(cli.id)}
                       title="Eliminar"
-                      className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition-colors"
+                      className="p-1.5 text-surface-400 hover:text-rose-400 hover:bg-surface-800 rounded-lg transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -108,7 +108,7 @@ export const ClienteTable = ({
             ))}
             {clientes.length === 0 && (
               <tr>
-                <td colSpan={7} className="py-12 text-center text-slate-500 font-medium">
+                <td colSpan={7} className="py-12 text-center text-surface-500 font-medium">
                   No se encontraron clientes registrados
                 </td>
               </tr>
@@ -118,25 +118,25 @@ export const ClienteTable = ({
       </div>
 
       {/* Pagination Footer */}
-      <div className="bg-slate-950/60 px-6 py-4 border-t border-slate-800 flex items-center justify-between">
-        <span className="text-xs text-slate-400">
+      <div className="bg-surface-950/60 px-6 py-4 border-t border-surface-800 flex items-center justify-between">
+        <span className="text-xs text-surface-400">
           Mostrando {clientes.length} de {total} empresas
         </span>
         <div className="flex items-center gap-2">
           <button
             disabled={page <= 1}
             onClick={() => onPageChange(page - 1)}
-            className="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="p-1.5 rounded-lg bg-surface-800 text-surface-300 hover:bg-surface-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <span className="text-xs font-semibold text-slate-300 px-2">
+          <span className="text-xs font-semibold text-surface-300 px-2">
             Página {page} de {pages || 1}
           </span>
           <button
             disabled={page >= pages}
             onClick={() => onPageChange(page + 1)}
-            className="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="p-1.5 rounded-lg bg-surface-800 text-surface-300 hover:bg-surface-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

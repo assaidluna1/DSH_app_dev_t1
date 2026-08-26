@@ -11,8 +11,8 @@ export const stageLabels = {
 };
 
 export const stageColors = {
-  prospeccion: 'bg-slate-700/60 text-slate-300 border-slate-600',
-  calificacion: 'bg-blue-900/50 text-blue-300 border-blue-700/60',
+  prospeccion: 'bg-surface-700/60 text-surface-300 border-surface-600',
+  calificacion: 'bg-brand-900/50 text-brand-300 border-brand-700/60',
   propuesta_tecnica: 'bg-amber-900/50 text-amber-300 border-amber-700/60',
   propuesta_comercial: 'bg-orange-900/50 text-orange-300 border-orange-700/60',
   negociacion: 'bg-purple-900/50 text-purple-300 border-purple-700/60',
@@ -23,7 +23,7 @@ export const stageColors = {
 export const priorityColors = {
   alta: 'bg-rose-900/40 text-rose-300 border-rose-700/50',
   media: 'bg-amber-900/40 text-amber-300 border-amber-700/50',
-  baja: 'bg-slate-800 text-slate-300 border-slate-700',
+  baja: 'bg-surface-800 text-surface-300 border-surface-700',
 };
 
 export const formatCurrency = (val) => {
@@ -33,7 +33,7 @@ export const formatCurrency = (val) => {
 
 export const StageBadge = ({ etapa }) => {
   const label = stageLabels[etapa] || etapa;
-  const style = stageColors[etapa] || 'bg-slate-800 text-slate-300 border-slate-700';
+  const style = stageColors[etapa] || 'bg-surface-800 text-surface-300 border-surface-700';
 
   return (
     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${style}`}>
