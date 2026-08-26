@@ -9,10 +9,11 @@ import {
   LogOut, 
   ShieldCheck,
   TrendingUp,
+  X,
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 
-export const Sidebar = ({ currentPath, onNavigate }) => {
+export const Sidebar = ({ currentPath, onNavigate, onClose }) => {
   const { user, logout } = useAuth();
 
   const navItems = [
@@ -31,10 +32,17 @@ export const Sidebar = ({ currentPath, onNavigate }) => {
         <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center shadow-lg shadow-brand-500/20">
           <TrendingUp className="w-5 h-5 text-white" />
         </div>
-        <div>
+        <div className="flex-1">
           <span className="font-bold text-base text-surface-100 tracking-tight">TechDist</span>
           <span className="text-xs font-semibold text-brand-400 ml-1.5 px-1.5 py-0.5 rounded bg-brand-500/10 border border-brand-500/20">CRM</span>
         </div>
+        <button
+          onClick={onClose}
+          className="lg:hidden p-1.5 text-surface-400 hover:text-surface-200 hover:bg-surface-800 rounded-lg transition-colors"
+          aria-label="Close sidebar"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Navigation Links */}

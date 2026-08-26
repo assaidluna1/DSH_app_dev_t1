@@ -92,8 +92,8 @@ export const Dashboard = () => {
         </button>
       </div>
 
-      {/* 1. ROW OF 6 KPI CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+      {/* 1. ROW OF 6 KPI CARDS — 2 cols mobile, 3 tablet, 6 desktop */}
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
         <KPICard
           title="Pipeline Total"
           value={summary?.pipeline_total_usd}
